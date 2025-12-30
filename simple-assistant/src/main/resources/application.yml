@@ -1,3 +1,48 @@
+app:
+  upload:
+    base-dir: D:\ProgramData\IdeaPrograms\CourseDesign\smart-home-system\simple-assistant\src\main\resources\static\image\  # 文件存储的基础目录
+    max-size: 10       # 最大文件大小 单位MB
+    allowed-types: image/jpeg,image/png,image/gif
+
 spring:
-    application:
-        name: simple-assistant
+  servlet:
+    multipart:
+      # 单个文件最大值
+      max-file-size: 10MB
+      # 整个文件最大值
+      max-request-size: 100MB
+  mvc:
+    static-path-pattern: /image/**
+  web:
+    resources:
+      static-locations: classpath:/static,file:${app.upload.base-dir}
+  application:
+    name: simple-assistant
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/smart_home_system?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: 123456
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 1
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 10
+          min-idle: 1
+          time-between-eviction-runs: 10s
+  ai:
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY}
+      chat:
+        options:
+          model: qwen-max
+      embedding:
+        options:
+          model: text-embedding-v1
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

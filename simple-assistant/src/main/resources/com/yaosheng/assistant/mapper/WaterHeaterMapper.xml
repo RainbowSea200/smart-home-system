@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yaosheng.assistant.mapper.WaterHeaterMapper">
+
+    <update id="updateWaterHeater">
+        update water_heater
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="image != null">
+                image = #{image},
+            </if>
+            <if test="statue != null">
+                statue = #{statue},
+            </if>
+            <if test="temperature != null">
+                temperature = #{temperature},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>
