@@ -1,7 +1,9 @@
 package com.yaosheng.assistant.controller;
 
 import com.yaosheng.assistant.pojo.TV;
+import com.yaosheng.assistant.pojo.TimeScheduler;
 import com.yaosheng.assistant.service.TVService;
+import com.yaosheng.assistant.service.TimeSchedulerService;
 import com.yaosheng.assistant.util.LocalFileStorageUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,8 @@ public class TVController {
     private TVService tvService;
     @Resource
     private LocalFileStorageUtil util;
+    @Resource
+    private TimeSchedulerService timeSchedulerService;
     @GetMapping("/get/{id}")
     public TV getTVById(@PathVariable Integer id) {
         return tvService.getTVById(id);
@@ -42,5 +46,9 @@ public class TVController {
     @DeleteMapping("/delete/{id}")
     public void deleteTVById(@PathVariable("id") Integer id) {
         tvService.deleteTVById(id);
+    }
+    @PostMapping("/addTask")
+    public void addTask(@RequestBody TimeScheduler timeScheduler) {
+        timeSchedulerService.addTask(timeScheduler);
     }
 }

@@ -1,6 +1,8 @@
 package com.yaosheng.assistant.controller;
 
+import com.yaosheng.assistant.pojo.TimeScheduler;
 import com.yaosheng.assistant.pojo.WaterHeater;
+import com.yaosheng.assistant.service.TimeSchedulerService;
 import com.yaosheng.assistant.service.WaterHeaterService;
 import com.yaosheng.assistant.util.LocalFileStorageUtil;
 import jakarta.annotation.Resource;
@@ -19,6 +21,8 @@ public class WaterHeaterController {
     private WaterHeaterService waterHeaterService;
     @Resource
     private LocalFileStorageUtil util;
+    @Resource
+    private TimeSchedulerService timeSchedulerService;
 
     @GetMapping("/get/{id}")
     public WaterHeater getWaterHeaterById(@PathVariable Integer id) {
@@ -43,5 +47,10 @@ public class WaterHeaterController {
     @DeleteMapping("/delete/{id}")
     public void deleteWaterHeaterById(@PathVariable Integer id) {
         waterHeaterService.deleteWaterHeaterById(id);
+    }
+
+    @PostMapping("/addTask")
+    public void addTask(@RequestBody TimeScheduler timeScheduler) {
+        timeSchedulerService.addTask(timeScheduler);
     }
 }

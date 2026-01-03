@@ -1,6 +1,6 @@
 app:
   upload:
-    base-dir: D:\ProgramData\IdeaPrograms\CourseDesign\smart-home-system\simple-assistant\src\main\resources\static\image\  # 文件存储的基础目录
+    base-dir: D:\ProgramData\IdeaPrograms\CourseDesign\smart-home-system\simple-assistant\src\main\resources\static\  # 文件存储的基础目录
     max-size: 10       # 最大文件大小 单位MB
     allowed-types: image/jpeg,image/png,image/gif
 
@@ -46,3 +46,4 @@ spring:
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true

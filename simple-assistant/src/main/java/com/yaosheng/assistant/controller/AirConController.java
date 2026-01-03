@@ -1,7 +1,9 @@
 package com.yaosheng.assistant.controller;
 
 import com.yaosheng.assistant.pojo.AirConditioner;
+import com.yaosheng.assistant.pojo.TimeScheduler;
 import com.yaosheng.assistant.service.AirConService;
+import com.yaosheng.assistant.service.TimeSchedulerService;
 import com.yaosheng.assistant.util.LocalFileStorageUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -19,6 +24,8 @@ public class AirConController {
     private AirConService airConService;
     @Resource
     private LocalFileStorageUtil util;
+    @Resource
+    private TimeSchedulerService timeSchedulerService;
 
     @GetMapping("/get/{id}")
     public AirConditioner getAirConById(@PathVariable Integer id) {
@@ -28,7 +35,7 @@ public class AirConController {
     @GetMapping("/getAll")
     public List<AirConditioner> getAllAirCon() {
         List<AirConditioner> allAirCon = airConService.getAllAirCon();
-        log.info("空调：{}",allAirCon);
+        log.info("空调：{}", allAirCon);
         return allAirCon;
     }
 
@@ -40,12 +47,19 @@ public class AirConController {
             log.error("保存图片失败: {}", e.getMessage());
         }
     }
+
     @PostMapping("/update")
     public void updateAirCon(@RequestBody AirConditioner airConditioner) {
         airConService.updateAirCon(airConditioner);
     }
+
     @DeleteMapping("/delete/{id}")
     public void deleteAirConById(@PathVariable Integer id) {
         airConService.deleteAirConById(id);
+    }
+
+    @PostMapping("/addTask")
+    public void addTask(@RequestBody TimeScheduler scheduler) {
+        timeSchedulerService.addTask(scheduler);
     }
 }

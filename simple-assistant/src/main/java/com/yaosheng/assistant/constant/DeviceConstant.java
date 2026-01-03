@@ -30,6 +30,11 @@ public class DeviceConstant {
     public static final Integer WATER_HEATER_NOT_EMPTY = 0;
     public static final Integer WATER_HEATER_FULL = 1;
 
+    public static final Integer DEVICE_AIR_CON = 0;
+    public static final Integer DEVICE_LIGHT = 1;
+    public static final Integer DEVICE_TV = 2;
+    public static final Integer DEVICE_WATER_HEATER = 3;
+
 
 
 

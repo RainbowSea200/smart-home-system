@@ -43,7 +43,7 @@ public class LocalFileStorageUtil {
 
         // 3. 创建日期目录：年/月/日
         String dateDir = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
-        String relativePath = dateDir + "/" + newFilename;
+        String relativePath = "image/" + dateDir + "/" + newFilename;
 
         // 4. 完整文件路径
         Path fullPath = Paths.get(baseDir, relativePath);
@@ -57,7 +57,7 @@ public class LocalFileStorageUtil {
         // 6. 保存文件
         file.transferTo(fullPath.toFile());
 
-        return "image/" + relativePath;
+        return relativePath;
     }
 
     /**

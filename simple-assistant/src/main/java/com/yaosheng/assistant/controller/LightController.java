@@ -1,7 +1,9 @@
 package com.yaosheng.assistant.controller;
 
 import com.yaosheng.assistant.pojo.Light;
+import com.yaosheng.assistant.pojo.TimeScheduler;
 import com.yaosheng.assistant.service.LightService;
+import com.yaosheng.assistant.service.TimeSchedulerService;
 import com.yaosheng.assistant.util.LocalFileStorageUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,8 @@ public class LightController {
     private LightService lightService;
     @Resource
     private LocalFileStorageUtil util;
+    @Resource
+    private TimeSchedulerService timeSchedulerService;
     @PostMapping("/add")
     public void addLight(@RequestParam("name") String name, @RequestParam("image") MultipartFile image) {
         try {
@@ -42,5 +46,9 @@ public class LightController {
     @DeleteMapping("/delete/{id}")
     public void deleteLight(@PathVariable Integer id) {
         lightService.deleteLightById(id);
+    }
+    @PostMapping("/addTask")
+    public void addTask(@RequestBody TimeScheduler timeScheduler) {
+        timeSchedulerService.addTask(timeScheduler);
     }
 }
