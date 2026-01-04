@@ -55,4 +55,8 @@ public class TVServiceImpl implements TVService {
     public List<TV> getAllTV() {
         return redisMapper.getDevices(DEVICE_TV, TV.class);
     }
+    @Override
+    public TV getTVByName(String name) {
+        return tvMapper.getTVByName(name);
+    }
 }

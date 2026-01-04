@@ -54,4 +54,8 @@ public class WaterHeaterServiceImpl implements WaterHeaterService {
     public List<WaterHeater> getAllWaterHeater() {
         return redisMapper.getDevices(DEVICE_WATER_HEATER, WaterHeater.class);
     }
+    @Override
+    public WaterHeater getWaterHeaterByName(String name) {
+        return waterHeaterMapper.getWaterHeaterByName(name);
+    }
 }

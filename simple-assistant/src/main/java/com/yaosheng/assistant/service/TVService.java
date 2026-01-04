@@ -10,4 +10,5 @@ public interface TVService {
     void deleteTVById(int id);
     TV getTVById(int id);
     List<TV> getAllTV();
+    TV getTVByName(String name);
 }

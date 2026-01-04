@@ -19,4 +19,6 @@ public interface AirConMapper {
     void deleteAirConById(Integer id);
     @Select("select id from air_conditioner;")
     List<Integer> getAllAirConIds();
+    @Select("select * from air_conditioner where name = #{name};")
+    AirConditioner getAirConByName(String name);
 }

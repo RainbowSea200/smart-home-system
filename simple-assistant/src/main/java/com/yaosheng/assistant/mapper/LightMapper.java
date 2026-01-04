@@ -3,6 +3,8 @@ package com.yaosheng.assistant.mapper;
 import com.yaosheng.assistant.pojo.Light;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface LightMapper {
     @Insert("insert into light (name, image) values (#{name},#{image});")
@@ -15,4 +17,6 @@ public interface LightMapper {
     String getImageById(Integer id);
     @Delete("delete from light where id = #{id};")
     void deleteLightById(Integer id);
+    @Select("select * from light where name = #{name};")
+    Light getLightByName(String name);
 }

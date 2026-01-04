@@ -11,4 +11,5 @@ public interface LightService {
     void deleteLightById(int id);
     Light getLightById(int id);
     List<Light> getAllLight();
+    Light getLightByName(String name);
 }

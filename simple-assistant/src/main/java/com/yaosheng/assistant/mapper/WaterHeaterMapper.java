@@ -15,4 +15,6 @@ public interface WaterHeaterMapper {
     String getImageById(Integer id);
     @Delete("delete from water_heater where id = #{id};")
     void deleteWaterHeaterById(Integer id);
+    @Select("select * from water_heater where name = #{name};")
+    WaterHeater getWaterHeaterByName(String name);
 }

@@ -15,4 +15,7 @@ public interface TVMapper {
     String getImageById(Integer id);
     @Delete("delete from tv where id = #{id}")
     void deleteTVById(Integer id);
+
+    @Select("select * from tv where name = #{name};")
+    TV getTVByName(String name);
 }

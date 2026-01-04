@@ -10,4 +10,5 @@ public interface AirConService {
     void deleteAirConById(int id);
     AirConditioner getAirConById(int id);
     List<AirConditioner> getAllAirCon();
+    AirConditioner getAirConByName(String name);
 }

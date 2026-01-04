@@ -53,4 +53,8 @@ public class LightServiceImpl implements LightService {
     public List<Light> getAllLight() {
         return redisMapper.getDevices(RedisConstant.DEVICE_LIGHT, Light.class);
     }
+    @Override
+    public Light getLightByName(String name) {
+        return lightMapper.getLightByName(name);
+    }
 }

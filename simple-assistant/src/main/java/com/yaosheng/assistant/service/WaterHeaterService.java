@@ -10,4 +10,5 @@ public interface WaterHeaterService {
     void deleteWaterHeaterById(int id);
     WaterHeater getWaterHeaterById(int id);
     List<WaterHeater> getAllWaterHeater();
+    WaterHeater getWaterHeaterByName(String name);
 }

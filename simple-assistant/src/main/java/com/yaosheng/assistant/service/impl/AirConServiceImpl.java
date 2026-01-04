@@ -56,4 +56,8 @@ public class AirConServiceImpl implements AirConService {
     public List<AirConditioner> getAllAirCon() {
         return redisMapper.getDevices(DEVICE_AIR_CON, AirConditioner.class);
     }
+    @Override
+    public AirConditioner getAirConByName(String name) {
+        return airConMapper.getAirConByName(name);
+    }
 }
